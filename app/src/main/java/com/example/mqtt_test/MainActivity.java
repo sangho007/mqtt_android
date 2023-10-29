@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     private int cnt = 0;
     TextView msgview;
     private MqttClient mqttClient = null;
-
     Uri video_uri;
 
     @Override
@@ -40,13 +39,7 @@ public class MainActivity extends AppCompatActivity {
         msgview = (TextView) findViewById(R.id.mqtt_message);
         msgview.setText(msg+Integer.toString(cnt));
 
-        video_uri = Uri.parse("android.resource://com.example.mqtt_test/" +
-                + R.raw.middle);
-
         VideoView video_View = (VideoView) findViewById(R.id.videoView);
-        video_View.setVideoURI(video_uri);
-        video_View.start();
-        video_View.setVisibility(View.VISIBLE);
 
         try {
             mqttClient = new MqttClient(ServerIP, MqttClient.generateClientId(), null);
@@ -77,18 +70,19 @@ public class MainActivity extends AppCompatActivity {
                             } else if (msg.equals("middle")) {
                                 video_uri = Uri.parse("android.resource://com.example.mqtt_test/" +
                                         R.raw.middle);
-                            }else if (msg.equals("high")) {
+                            } else if (msg.equals("high")) {
                                 video_uri = Uri.parse("android.resource://com.example.mqtt_test/" +
                                         R.raw.high);
-                            }
-                            else if (msg.equals("safety")) {
+                            } else if (msg.equals("safety")) {
                                 video_uri = Uri.parse("android.resource://com.example.mqtt_test/" +
                                         R.raw.safety);
-                            }else if (msg.equals("advertise")) {
+                            } else if (msg.equals("advertise")) {
                                 video_uri = Uri.parse("android.resource://com.example.mqtt_test/" +
                                         R.raw.advertise);
+                            } else if (msg.equals("open")) {
+                                video_uri = Uri.parse("android.resource://com.example.mqtt_test/" +
+                                        R.raw.open_voice);
                             }
-
 
                             video_View.setVideoURI(video_uri);
                             video_View.start();
