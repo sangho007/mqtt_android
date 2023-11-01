@@ -22,7 +22,9 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 public class MainActivity extends AppCompatActivity {
-    private String ServerIP = "tcp://10.0.2.2:1883";
+//    private String ServerIP = "tcp://10.0.2.2:1883";
+    private String ServerIP = "tcp://172.30.1.72:1883";
+
     private String TOPIC = "mqtt/test";
     private String msg = "";
     private int cnt = 0;
